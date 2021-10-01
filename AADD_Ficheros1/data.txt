@@ -1,0 +1,5 @@
+EMPRESA,EDAD,NUM_EMPLEADOS
+"Ayuntamiento de Gijón/Xixón","17","1"
+"Ayuntamiento de Gijón/Xixón","19","1"
+"Ayuntamiento de Gijón/Xixón","21","2"
+"Ayuntamiento de Gijón/Xixón","22","2"
