@@ -1,0 +1,12 @@
+- Qué ocurre si hay más clientes que cocineros
+    Que en el momento que se genera una hamburguesa esta es consumida casi que al instante.
+
+- Qué ocurre si hay más cocineros que clientes
+    Pues que, se generan mas hamburguesas y "sobran", es decir los clientes van consumiendo pero siempre hay mas hamburguesas de lo necesario.
+
+- Qué ocurre si alteramos el valor de descanso de los hilos (en lugar de 1-3 a 0-2, por ejemplo)
+    Las hamburguesas son realizadas con muchísima velocidad al igual que el consumo de las mismas, a veces hay muchas hamburguesas en la bandeja y otras veces faltan.
+
+- Hasta qué punto tu PC es capaz de soportar concurrencia sin explotar (lanza muchos muchos hilos clientes y cocineros).
+    Con 8000000 hilos de cada (chefs y clientes) los aguanta, más de eso los aguanta dependiendo de otros programas que tenga abiertos ya que lanza a veces un error de OutOfMemory Java Heap Space.
+    Esto contando con que mi ordenador tiene un Ryzen 9 5900X con 12 nucleos y 24 hilos acompañados de 32 gb de RAM.
