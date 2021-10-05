@@ -55,20 +55,24 @@ public class MainView {
 		lblPreview = new JLabel("CSV/Data Preview");
 		lblPreview.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPreview.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblPreview.setBounds(315, 42, 309, 29);
+		lblPreview.setBounds(272, 35, 352, 29);
 		frmCsvconverter.getContentPane().add(lblPreview);
 		
 		btnLoadCsv = new JButton("Load CSV");
-		btnLoadCsv.setBounds(10, 100, 89, 23);
+		btnLoadCsv.setBounds(20, 106, 105, 25);
 		frmCsvconverter.getContentPane().add(btnLoadCsv);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(315, 82, 309, 300);
+		scrollPane.setBounds(272, 75, 352, 325);
 		frmCsvconverter.getContentPane().add(scrollPane);
 		
 		textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
 		textPane.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnLoadBinary = new JButton("Load Binary");
+		btnLoadBinary.setBounds(135, 106, 105, 25);
+		frmCsvconverter.getContentPane().add(btnLoadBinary);
 
 		frmCsvconverter.setResizable(false);
 		frmCsvconverter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
