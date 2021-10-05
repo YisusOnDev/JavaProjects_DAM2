@@ -26,8 +26,10 @@ public class ReadWrite {
 			while (sc.hasNextLine()) {
 				var stringChain = sc.nextLine();
 				lines.add(stringChain);
+				Logger.printConsole("Readed csv line: " + stringChain);
 			}
 			sc.close();
+			Logger.printConsole("Finished read csv from: " + filePath);
 			return lines;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -43,11 +45,14 @@ public class ReadWrite {
 
 			try {
 				while (objStream.available() != -1) {
-					csvLines.add((String) objStream.readObject());
+					var stringChain = (String) objStream.readObject();
+					csvLines.add(stringChain);
+					Logger.printConsole("Readed binary line: " + stringChain);
 				}
 				objStream.close();
 			} catch (EOFException e) {
 				objStream.close();
+				Logger.printConsole("Finished read binary from: " + filePath);
 				return csvLines;
 			}
 		} catch (ClassNotFoundException e) {
@@ -67,6 +72,7 @@ public class ReadWrite {
 				Logger.printConsole("Writing line into " + outPath + " -> " + line);
 			}
 			fileWriter.close();
+			Logger.printConsole("Finished writing binary file: " + outPath);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -84,6 +90,7 @@ public class ReadWrite {
 				fileWriter.write(System.getProperty("line.separator"));
 			}
 			fileWriter.close();
+			Logger.printConsole("Finished writing csv file: " + outPath);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,7 +101,7 @@ public class ReadWrite {
 	public static boolean convertCSVToBinary(String filePath, String outPath) {
 		ArrayList<String> lines = readCsv(filePath);
 		if (lines != null && writeBinary(outPath, lines) == true) {
-			Logger.printConsole("Finished writing binary file: " + outPath);
+			Logger.printConsole("CSV from " + filePath + " succesfully converted to: " + outPath);
 			return true;
 		} else {
 			return false;
@@ -105,7 +112,7 @@ public class ReadWrite {
 		ArrayList<String> csvLines = readBinary(filePath);
 
 		if (csvLines != null && writeCsv(outPath, csvLines) == true) {
-			Logger.printConsole("Finished writing csv file: " + outPath);
+			Logger.printConsole("Binary from " + filePath + " succesfully converted to: " + outPath);
 			return true;
 		} else {
 			return false;
@@ -120,11 +127,13 @@ public class ReadWrite {
 				fileWriter.write(line);
 				fileWriter.write(System.getProperty("line.separator"));
 			}
+			Logger.printConsole("Succesfully written log file into: " + outPath);
 			fileWriter.close();
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		Logger.printConsole("Error while trying to write log file into: " + outPath);
 		return false;
 	}
 
@@ -146,8 +155,10 @@ public class ReadWrite {
 		if (csvLines != null) {
 			csvLines = sortLines(csvLines);
 			if (writeCsv(outPath, csvLines) == true) {
+				Logger.printConsole("CSV from " + filePath + " succesfully sorted to: " + outPath);
 				return true;
 			} else {
+				Logger.printConsole("Error trying to sort csv file from " + filePath);
 				return false;
 			}
 		}
@@ -159,8 +170,10 @@ public class ReadWrite {
 		if (binaryLines != null) {
 			binaryLines = sortLines(binaryLines);
 			if (writeBinary(outPath, binaryLines) == true) {
+				Logger.printConsole("Binary from " + filePath + " succesfully sorted to: " + outPath);
 				return true;
 			} else {
+				Logger.printConsole("Error trying to sort binary file from " + filePath);
 				return false;
 			}
 		}
@@ -173,6 +186,7 @@ public class ReadWrite {
 			binaryLines = sortLines(binaryLines);
 			if (binaryLines != null) {
 				if (writeCsv(outPath, binaryLines) == true) {
+					Logger.printConsole("Binary from " + filePath + " succesfully sorted and converted to: " + outPath);
 					return true;
 				} else {
 					return false;
@@ -181,6 +195,7 @@ public class ReadWrite {
 				return false;
 			}
 		}
+
 		return false;
 	}
 
