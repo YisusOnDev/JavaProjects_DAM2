@@ -24,7 +24,7 @@ public class ReadWrite {
 			Scanner sc = new Scanner(myObj, "UTF-8");
 
 			while (sc.hasNextLine()) {
-				var stringChain = sc.nextLine();
+				String stringChain = sc.nextLine();
 				lines.add(stringChain);
 				Logger.printConsole("Readed csv line: " + stringChain);
 			}
@@ -45,7 +45,7 @@ public class ReadWrite {
 
 			try {
 				while (objStream.available() != -1) {
-					var stringChain = (String) objStream.readObject();
+					String stringChain = (String) objStream.readObject();
 					csvLines.add(stringChain);
 					Logger.printConsole("Readed binary line: " + stringChain);
 				}
