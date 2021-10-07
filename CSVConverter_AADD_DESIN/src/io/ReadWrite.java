@@ -17,6 +17,12 @@ import utils.Logger;
 
 public class ReadWrite {
 
+	/**
+	 * Method that load/read a csv file and return all of his lines on an ArrayList
+	 * 
+	 * @param filePath path of the file we want to read.
+	 * @return
+	 */
 	public static ArrayList<String> readCsv(String filePath) {
 		ArrayList<String> lines = new ArrayList<String>();
 		try {
@@ -37,6 +43,13 @@ public class ReadWrite {
 		return null;
 	}
 
+	/**
+	 * Method that load/read a dat/binary file and return all of his lines on an
+	 * ArrayList
+	 * 
+	 * @param filePath path of the file we want to read.
+	 * @return
+	 */
 	public static ArrayList<String> readBinary(String filePath) {
 		ArrayList<String> csvLines = new ArrayList<String>();
 		try {
@@ -64,6 +77,13 @@ public class ReadWrite {
 		return null;
 	}
 
+	/**
+	 * Method that writes a dat/binary file
+	 * 
+	 * @param outPath Where we want to save the converted file
+	 * @param lines   ArrayList of file String lines
+	 * @return true if done false if fails
+	 */
 	public static boolean writeBinary(String outPath, ArrayList<String> lines) {
 		try {
 			ObjectOutputStream fileWriter = new ObjectOutputStream(new FileOutputStream(outPath));
@@ -80,6 +100,13 @@ public class ReadWrite {
 		return false;
 	}
 
+	/**
+	 * Method that writes a csv file
+	 * 
+	 * @param outPath Where we want to save the converted file
+	 * @param lines   ArrayList of file String lines
+	 * @return true if done false if fails
+	 */
 	public static boolean writeCsv(String outPath, ArrayList<String> lines) {
 		try {
 			FileWriter fileWriter = new FileWriter(outPath);
@@ -98,6 +125,14 @@ public class ReadWrite {
 		return false;
 	}
 
+	/**
+	 * Method that converta csv file to dat/binary file and save it on the preferred
+	 * path.
+	 * 
+	 * @param filePath where's main file located
+	 * @param outPath  where we want to save the converted one
+	 * @return true if done false if fails
+	 */
 	public static boolean convertCSVToBinary(String filePath, String outPath) {
 		ArrayList<String> lines = readCsv(filePath);
 		if (lines != null && writeBinary(outPath, lines) == true) {
@@ -108,6 +143,14 @@ public class ReadWrite {
 		}
 	}
 
+	/**
+	 * Method that converta binary/dat file to csv file and save it on the preferred
+	 * path.
+	 * 
+	 * @param filePath where's main file located
+	 * @param outPath  where we want to save the converted one
+	 * @return true if done false if fails
+	 */
 	public static boolean convertBinaryToCsv(String filePath, String outPath) {
 		ArrayList<String> csvLines = readBinary(filePath);
 
@@ -119,6 +162,13 @@ public class ReadWrite {
 		}
 	}
 
+	/**
+	 * Method that save the log built on program run
+	 * 
+	 * @param outPath where the file is going to be saved
+	 * @param log     ArrayList<String> of the Logger
+	 * @return true if done false if fails
+	 */
 	public static boolean writeLogFile(String outPath, ArrayList<String> log) {
 		try {
 			FileWriter fileWriter = new FileWriter(outPath);
@@ -137,6 +187,12 @@ public class ReadWrite {
 		return false;
 	}
 
+	/**
+	 * Method that sort an ArrayList of Strings
+	 * 
+	 * @param lines the ArrayList<String>
+	 * @return an ArrayList<String> but sorted
+	 */
 	public static ArrayList<String> sortLines(ArrayList<String> lines) {
 		ArrayList<String> toSortedLines = lines;
 		ArrayList<String> sortedLines = new ArrayList<String>();
@@ -150,6 +206,13 @@ public class ReadWrite {
 		return sortedLines;
 	}
 
+	/**
+	 * Method that sort a csv file and save it on the preferred path
+	 * 
+	 * @param filePath original csv path
+	 * @param outPath  where we want to save the sorted one
+	 * @return true if done false if fails
+	 */
 	public static boolean sortCsv(String filePath, String outPath) {
 		ArrayList<String> csvLines = readCsv(filePath);
 		if (csvLines != null) {
@@ -165,6 +228,13 @@ public class ReadWrite {
 		return false;
 	}
 
+	/**
+	 * Method that sort a binary/dat file and save it on the preferred path
+	 * 
+	 * @param filePath original binary/dat path
+	 * @param outPath  where we want to save the sorted one
+	 * @return true if done false if fails
+	 */
 	public static boolean sortBinary(String filePath, String outPath) {
 		ArrayList<String> binaryLines = readBinary(filePath);
 		if (binaryLines != null) {
@@ -180,6 +250,13 @@ public class ReadWrite {
 		return false;
 	}
 
+	/**
+	 * Special method to convert a binary/dat file to a sorted csv one
+	 * 
+	 * @param filePath original binary/dat file path
+	 * @param outPath  target path to the converted and sorted csv
+	 * @return true if done false if fails
+	 */
 	public static boolean binaryFileToSortedCsv(String filePath, String outPath) {
 		ArrayList<String> binaryLines = readBinary(filePath);
 		if (binaryLines != null) {
