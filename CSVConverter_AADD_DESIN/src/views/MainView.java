@@ -88,7 +88,7 @@ public class MainView {
 		textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
 		textPane.setEditable(false);
-		textPane.setBackground(Color.LIGHT_GRAY);
+		textPane.setBackground(new Color(255, 255, 255));
 
 		btnConvert = new JButton("Conver to ");
 		btnConvert.setBounds(20, 111, 184, 25);
