@@ -1,0 +1,71 @@
+LOG | 08/10/2021 13:21:09 | Readed csv line: DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Readed csv line: 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Readed csv line: 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Readed csv line: 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Readed csv line: 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Finished read csv from: origCsv.csv
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv.dat -> DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv.dat -> 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv.dat -> 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv.dat -> 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv.dat -> 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Finished writing binary file: origCsv.dat
+LOG | 08/10/2021 13:21:09 | CSV from origCsv.csv succesfully converted to: origCsv.dat
+LOG | 08/10/2021 13:21:09 | Readed binary line: DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Readed binary line: 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Readed binary line: 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Readed binary line: 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Readed binary line: 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Finished read binary from: origCsv.dat
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_converted.csv -> DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_converted.csv -> 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_converted.csv -> 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_converted.csv -> 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_converted.csv -> 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Finished writing csv file: origCsv_converted.csv
+LOG | 08/10/2021 13:21:09 | Binary from origCsv.dat succesfully converted to: origCsv_converted.csv
+LOG | 08/10/2021 13:21:09 | Readed csv line: DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Readed csv line: 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Readed csv line: 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Readed csv line: 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Readed csv line: 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Finished read csv from: origCsv.csv
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.csv -> DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.csv -> 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.csv -> 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.csv -> 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.csv -> 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Finished writing csv file: origCsv_ord.csv
+LOG | 08/10/2021 13:21:09 | CSV from origCsv.csv succesfully sorted to: origCsv_ord.csv
+LOG | 08/10/2021 13:21:09 | Readed binary line: DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Readed binary line: 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Readed binary line: 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Readed binary line: 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Readed binary line: 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Finished read binary from: origCsv.dat
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.dat -> DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.dat -> 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.dat -> 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.dat -> 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_ord.dat -> 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Finished writing binary file: origCsv_ord.dat
+LOG | 08/10/2021 13:21:09 | Binary from origCsv.dat succesfully sorted to: origCsv_ord.dat
+LOG | 08/10/2021 13:21:09 | Readed binary line: DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Readed binary line: 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Readed binary line: 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Readed binary line: 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Readed binary line: 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Finished read binary from: origCsv.dat
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_convertedandsorted.csv -> DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_convertedandsorted.csv -> 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_convertedandsorted.csv -> 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_convertedandsorted.csv -> 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:09 | Writing line into origCsv_convertedandsorted.csv -> 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:09 | Finished writing csv file: origCsv_convertedandsorted.csv
+LOG | 08/10/2021 13:21:09 | Binary from origCsv.dat succesfully sorted and converted to: origCsv_convertedandsorted.csv
+LOG | 08/10/2021 13:21:31 | Readed csv line: DNI,NOMBRE,APELLIDOS,TELEF
+LOG | 08/10/2021 13:21:31 | Readed csv line: 77957493j,Juan,Romero,666555444
+LOG | 08/10/2021 13:21:31 | Readed csv line: 33345665g,Helena,Martinez,666555444
+LOG | 08/10/2021 13:21:31 | Readed csv line: 22256093f,Diego,Hernandez,663456789
+LOG | 08/10/2021 13:21:31 | Readed csv line: 12345678m,Valeria,Vilches,952234543
+LOG | 08/10/2021 13:21:31 | Finished read csv from: D:\GithubRepositories\JavaProjects\CSVConverter_AADD_DESIN\origCsv.csv
