@@ -33,3 +33,13 @@ create table recibe (
 	foreign key (nummatricula) references alumno(nummatricula),
 	foreign key (codasignatura) references asignatura(codasignatura)
 );
+
+INSERT INTO school.alumno
+(nummatricula, nombre, fechanacimiento, telefono)
+VALUES(1, 'Jesus', '2001-08-28', '+34631269272');
+INSERT INTO school.alumno
+(nummatricula, nombre, fechanacimiento, telefono)
+VALUES(2, 'Lidia', '2000-09-29', '666555444');
+INSERT INTO school.alumno
+(nummatricula, nombre, fechanacimiento, telefono)
+VALUES(3, 'Carlos', '1990-12-12', '+1555999666');
