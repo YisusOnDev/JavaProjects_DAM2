@@ -297,15 +297,17 @@ public class MainView {
 	 * Method to show currentIndex student data on screen if there is data of course
 	 */
 	private void showCurrent() {
-		if (students.size() == 0) {
-			JOptionPane.showMessageDialog(frame, "There is no students in database, feel free to create the first one!",
-					"No students", JOptionPane.INFORMATION_MESSAGE);
-		} else {
-			Student firstStudent = students.get(currentIndex);
-			tFieldRegistrationNumber.setText(firstStudent.getRegistrationNumber().toString());
-			tFieldName.setText(firstStudent.getName());
-			tFieldBirthdate.setText(firstStudent.getBirthdate().toString());
-			tFieldPhoneNumber.setText(firstStudent.getPhoneNumber());
+		if (students != null) {
+			if (students.size() == 0) {
+				JOptionPane.showMessageDialog(frame, "There is no students in database, feel free to create the first one!",
+						"No students", JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				Student firstStudent = students.get(currentIndex);
+				tFieldRegistrationNumber.setText(firstStudent.getRegistrationNumber().toString());
+				tFieldName.setText(firstStudent.getName());
+				tFieldBirthdate.setText(firstStudent.getBirthdate().toString());
+				tFieldPhoneNumber.setText(firstStudent.getPhoneNumber());
+			}	
 		}
 	}
 
