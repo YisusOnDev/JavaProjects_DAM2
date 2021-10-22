@@ -1,0 +1,12 @@
+Profesor;12345678N;Nacho Lorenzo;Informática;666123456
+Asignatura;1DAM_ED;Entornos de Desarrollo
+Asignatura;1DAM_LM;Lenguajes de Marcas
+Asignatura;2DAM_AD;Acceso a Datos
+Asignatura;2DAM_SGE;Sistemas de Gestión Empresarial
+Profesor;12345676J;José de la Torre;Informática;661113456
+Asignatura;1DAM_PR;Programación
+Asignatura;2DAM_PSP;Programación de Servicios y Procesos
+Asignatura;2DAM_DI;Diseño de Interfaces
+Profesor;44445676F;Francisco Fernández;Informática;661187656
+Asignatura;1DAM_SI;Sistemas Informáticos
+Asignatura;2DAM_PDM;Programación y Dispositivos Móviles
