@@ -43,4 +43,11 @@ public class Subject {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "Subject [code=" + code + ", name=" + name + "]";
+	}
+	
+	
+
 }

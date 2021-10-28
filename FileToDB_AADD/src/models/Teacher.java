@@ -1,16 +1,11 @@
 package models;
 
-import java.util.ArrayList;
-
-import javax.security.auth.Subject;
-
 public class Teacher {
 
 	private String nif;
 	private String name;
 	private String specialty;
 	private String phoneNumber;
-	private ArrayList<Subject> subjectsList;
 
 	public Teacher(String nif, String name, String specialty, String phoneNumber) {
 		super();
@@ -20,13 +15,10 @@ public class Teacher {
 		this.phoneNumber = phoneNumber;
 	}
 	
-	public Teacher(String nif, String name, String specialty, String phoneNumber, ArrayList<Subject> subjectsList) {
-		super();
-		this.nif = nif;
-		this.name = name;
-		this.specialty = specialty;
-		this.phoneNumber = phoneNumber;
-		this.subjectsList = subjectsList;
+	@Override
+	public String toString() {
+		return "Teacher [nif=" + nif + ", name=" + name + ", specialty=" + specialty + ", phoneNumber=" + phoneNumber
+				+ "]";
 	}
 
 	public String getNif() {
@@ -59,14 +51,6 @@ public class Teacher {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public ArrayList<Subject> getSubjectsList() {
-		return subjectsList;
-	}
-
-	public void setSubjectsList(ArrayList<Subject> subjectsList) {
-		this.subjectsList = subjectsList;
 	}
 
 	

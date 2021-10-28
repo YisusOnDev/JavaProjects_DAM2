@@ -7,8 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.security.auth.Subject;
-
+import models.Subject;
 import models.Teacher;
 
 public class DBManager {
@@ -23,37 +22,47 @@ public class DBManager {
 			try {
 				// Assume a valid connection object conn
 				conn.setAutoCommit(false);
-				
+
 				PreparedStatement stmt = null;
 				ResultSet rs = null;
-				boolean insertingTeacher = false;
-		
-				for (Object object : list) {
-					if (object.getClass() == Teacher.class) {
-						if (!insertingTeacher) {
-							insertingTeacher = true;
-							Teacher teacher = (Teacher) object;
-							stmt = conn.prepareStatement("INSERT INTO profesor VALUES (" + teacher.getNif() + "," + teacher.getName() + "," + teacher.getSpecialty() + "," + teacher.getPhoneNumber() + ")", PreparedStatement.RETURN_GENERATED_KEYS);
-							stmt.execute();
-						}
-					} else if (insertingTeacher && object.getClass() == Subject.class) {
+				boolean firstTime = true;
+				int autoId = -1;
+
+				for (int i = 0; i < list.size(); i++) {
+					if (list.get(i).getClass() == Teacher.class) {
+						if (!firstTime)
+							conn.commit();
+
+						firstTime = false;
+						Teacher teacher = (Teacher) list.get(i);
+						stmt = conn.prepareStatement(
+								"INSERT INTO profesor (nif_p, nombre, especialidad, telefono) VALUES (?, ?, ?, ?)",
+								PreparedStatement.RETURN_GENERATED_KEYS);
+						stmt.setString(1, teacher.getNif());
+						stmt.setString(2, teacher.getName());
+						stmt.setString(3, teacher.getSpecialty());
+						stmt.setString(4, teacher.getPhoneNumber());
+						stmt.execute();
+
+					} else if (list.get(i).getClass() == Subject.class) {
+						Subject subject = (Subject) list.get(i);
 						rs = stmt.getGeneratedKeys();
-						System.out.println("Rs:");
-						System.out.println(rs);
-						
+						rs.next();
+						autoId = rs.getInt(1);
+						PreparedStatement subjectInsert = conn.prepareStatement(
+								"INSERT INTO asignatura (codasignatura, nombre, idprofesor) VALUES (?, ?, ?)",
+								PreparedStatement.RETURN_GENERATED_KEYS);
+						subjectInsert.setString(1, subject.getCode());
+						subjectInsert.setString(2, subject.getName());
+						subjectInsert.setInt(3, autoId);
+						subjectInsert.execute();
 					}
 				}
-				
-				
-				String SQL = "INSERT INTO profesor " + "VALUES (106, 20, 'Rita', 'Tez')";
-				stmt.executeUpdate(SQL);
-				// Submit a malformed SQL statement that breaks
-				String SQL2 = "INSERTED IN Employees  " + "VALUES (107, 22, 'Sita', 'Singh')";
-				stmt.executeUpdate(SQL2);
-				// If there is no error.
 				conn.commit();
+
 			} catch (SQLException se) {
 				// If there is any error.
+				System.out.println(se);
 				conn.rollback();
 			}
 		} catch (SQLException e) {
