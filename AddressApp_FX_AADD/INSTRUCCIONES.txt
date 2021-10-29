@@ -1,0 +1,5 @@
+En los argumentos de arranque de la vm añadir: --illegal-access   (para que funcione el "save" y "save as"
+Java Usado: JavaSE-16
+
+Requisitos:
+- MAVEN
