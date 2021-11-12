@@ -1,4 +1,4 @@
-use testapibe;
+Tuse testapibe;
 INSERT INTO `provinces` (`Id`, `Name`)
 VALUES
 	(2,'Albacete'),

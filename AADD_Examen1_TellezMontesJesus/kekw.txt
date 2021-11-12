@@ -1,0 +1,25 @@
+CATEGORIAS
+id;categoria;descripción
+1;Bebidas;Gaseosas, café, té, cervezas y maltas
+
+PROVEEDORES
+id;empresa;contacto
+1;Exotic Liquids;Charlotte Cooper
+7;Pavlova, Ltd.;Ian Devling
+10;Refrescos Americanas LTDA;Carlos Diaz
+12;Plutzer Lebensmittelgroßmärkte AG;Martin Bein
+16;Bigfoot Breweries;Cheryl Saylor
+18;Aux joyeux ecclésiastiques;Guylène Nodier
+20;Leka Trading;Chandra Leka
+23;Karkki Oy;Anne Heikkonen
+
+PRODUCTOS
+id;producto;proveedor_id;categoria_id;cantidad_por_unidad;precio_unidad;unidades_existencia;unidades_pedido;nivel_nuevo_pedido;suspendido
+1;Té Dharamsala;1;1;10 cajas x 20 bolsas;18.0;39;0;10;0
+70;Cerveza Outback;7;1;24 - bot. 355 ml;15.0;15;10;30;0
+24;Refresco Guaraná Fantástica;10;1;12 - latas 355 ml;4.5;20;0;0;-1
+75;Cerveza Klosterbier Rhönbräu;12;1;24 - bot. 0,5 l;7.75;125;0;25;0
+34;Cerveza Sasquatch;16;1;24 - bot. 12 l;14.0;111;0;15;0
+38;Vino Côte de Blaye;18;1;12 - bot. 75 cl;263.5;17;0;15;0
+43;Café de Malasia;20;1;16 - latas 500 g;46.0;17;10;25;0
+76;Licor Cloudberry;23;1;500 ml;18.0;57;0;20;0
