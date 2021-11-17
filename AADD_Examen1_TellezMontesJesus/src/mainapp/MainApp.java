@@ -7,9 +7,11 @@ public class MainApp {
 	private static final String FILE_PATH = "Alumnado_nuevo.txt";	
 
 	public static void main(String[] args) {
-		// Main (Ejer1)
+		// Main 1 (Ejer1)
 		DBManager.crearTablaSuperusuarios(FILE_PATH);
-		// Main (Ejer2)
+		// Main 2 (Ejer1)
 		ReadWrite.almacenarProductosEnFichero(1, "kekw.txt");
+		// Main 2 (Ejer2)
+		DBManager.insertFromArray(ReadWrite.fichero_a_tablas("kekw.txt"));
 	}
 }

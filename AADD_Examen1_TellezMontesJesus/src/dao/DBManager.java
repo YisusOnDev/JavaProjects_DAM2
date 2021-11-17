@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -134,5 +135,100 @@ public class DBManager {
 			System.err.println(e.getMessage());
 		}
 		return null;
+	}
+
+	/**
+	 * Método que a través de un ArrayList de Objectos extrae los productos,
+	 * categorias y proveedores y los inserta de manera "safe" a la base de datos
+	 * usando preparedStatements.
+	 * 
+	 * @param fileData ArrayList<Object> con Productos, categorías y proveedores.
+	 */
+	public static void insertFromArray(ArrayList<Object> fileData) {
+		ArrayList<Productos> products = new ArrayList<Productos>();
+		ArrayList<Categorias> categories = new ArrayList<Categorias>();
+		ArrayList<Proveedores> suppliers = new ArrayList<Proveedores>(); // 1
+
+		for (Object object : fileData) {
+			if (object instanceof Productos) {
+				products.add((Productos) object);
+			} else if (object instanceof Categorias) {
+				categories.add((Categorias) object);
+			} else if (object instanceof Proveedores) {
+				suppliers.add((Proveedores) object);
+			}
+		}
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(CONNECTION, USER, PWD);
+			conn.setAutoCommit(false);
+
+			PreparedStatement stmt = null;
+			boolean firstTime = true;
+
+			for (Categorias c : categories) {
+				if (!firstTime)
+					conn.commit();
+
+				firstTime = false;
+				stmt = conn
+						.prepareStatement("INSERT INTO categorias_new (id, categoria, descripcion) VALUES (?, ?, ?)");
+				stmt.setInt(1, c.getId());
+				stmt.setString(2, c.getCategoria());
+				stmt.setString(3, c.getDescripcion());
+				stmt.execute();
+			}
+
+			conn.commit();
+			stmt = null;
+			firstTime = true;
+
+			for (Proveedores p : suppliers) {
+				if (!firstTime)
+					conn.commit();
+
+				firstTime = false;
+				stmt = conn.prepareStatement("INSERT INTO proveedores_new (id, empresa, contacto) VALUES (?, ?, ?)");
+				stmt.setInt(1, p.getId());
+				stmt.setString(2, p.getEmpresa());
+				stmt.setString(3, p.getContacto());
+				stmt.execute();
+			}
+
+			conn.commit();
+			stmt = null;
+			firstTime = true;
+
+			for (Productos pd : products) {
+				if (!firstTime)
+					conn.commit();
+
+				firstTime = false;
+				// En mi base de datos la id no es auto incremental, en todo caso solo habría
+				// que quitar el campo id de la query y del preparedStatement.
+				stmt = conn.prepareStatement(
+						"INSERT INTO productos_new (id, producto, proveedor_id, categoria_id, cantidad_por_unidad, precio_unidad, unidades_existencia, unidades_pedido, nivel_nuevo_pedido, suspendido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				stmt.setInt(1, pd.getId());
+				stmt.setString(2, pd.getProducto());
+				stmt.setInt(3, pd.getProveedorId());
+				stmt.setInt(4, pd.getCategoriaId());
+				stmt.setString(5, pd.getCantidadPorUnidad());
+				stmt.setDouble(6, pd.getPrecioUnidad());
+				stmt.setInt(7, pd.getUnidadesExistencia());
+				stmt.setInt(8, pd.getUnidadesPedido());
+				stmt.setInt(9, pd.getNivelNuevoPedido());
+				stmt.setInt(10, pd.getSuspendido());
+				stmt.execute();
+			}
+
+			conn.commit();
+		} catch (SQLException se) {
+			try {
+				conn.rollback();
+				System.out.println("Found an error while trying to insert data. Rolled back.");
+			} catch (SQLException e) {
+			}
+		}
+
 	}
 }

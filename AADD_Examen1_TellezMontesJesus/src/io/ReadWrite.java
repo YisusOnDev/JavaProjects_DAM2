@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -111,12 +111,96 @@ public class ReadWrite {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		fichero_a_tablas(fileName);
-
 	}
 
-	public static void fichero_a_tablas(String fileName) {
+	/**
+	 * Método que a partir de un fichero genera un ArrayList con objetos de
+	 * categorias, proovedores y productos que después llama otro método para
+	 * insertarlos de manera "safe" en la base de datos.
+	 * 
+	 * @param fileName path donde esta el archivo
+	 */
+	public static ArrayList<Object> fichero_a_tablas(String fileName) {
 		ArrayList<Object> tempList = new ArrayList<Object>();
+		BufferedReader bufferedReader;
+
+		// Leemos el archivo
+		try {
+			bufferedReader = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8));
+			String line = bufferedReader.readLine();
+			ArrayList<String> lines = new ArrayList<String>();
+			while (line != null) {
+				// Generamos un ArrayList<String> con cada línea suprimiendo las líneas en
+				// blanco
+				if (!line.isBlank()) {
+					lines.add(line);
+				}
+				line = bufferedReader.readLine();
+			}
+			bufferedReader.close();
+
+			// Leemos todas las líneas y según su tipo generamos un objeto y lo insertamos
+			// en el ArrayList<Object>
+			String currentType = null;
+			for (int i = 0; i < lines.size(); i++) {
+				if (lines.get(i).startsWith("CATEGORIAS")) {
+					currentType = "cat";
+					i++;
+				}
+				if (lines.get(i).startsWith("PROVEEDORES")) {
+					currentType = "prov";
+					i++;
+				}
+				if (lines.get(i).startsWith("PRODUCTOS")) {
+					currentType = "prod";
+					i++;
+				}
+				if (!lines.get(i).startsWith("id;")) {
+					var stringChains = lines.get(i).split(";");
+
+					for (String s : stringChains) {
+						while (s.endsWith(";")) {
+							s = s.substring(0, s.length() - 1);
+						}
+
+						s = s.trim();
+					}
+
+					switch (currentType) {
+					case "cat": {
+						Categorias c = new Categorias(Integer.parseInt(stringChains[0]), stringChains[1],
+								stringChains[2]);
+						tempList.add(c);
+						break;
+					}
+					case "prov": {
+						Proveedores p = new Proveedores(Integer.parseInt(stringChains[0]), stringChains[1],
+								stringChains[2]);
+						tempList.add(p);
+						break;
+					}
+					case "prod": {
+						Productos pd = new Productos(Integer.parseInt(stringChains[0]), stringChains[1],
+								Integer.parseInt(stringChains[2]), Integer.parseInt(stringChains[3]), stringChains[4],
+								Double.parseDouble(stringChains[5]), Integer.parseInt(stringChains[6]),
+								Integer.parseInt(stringChains[7]), Integer.parseInt(stringChains[8]),
+								Integer.parseInt(stringChains[9]));
+
+						tempList.add(pd);
+						break;
+					}
+					default:
+						throw new IllegalArgumentException("Unexpected value: " + currentType);
+					}
+				}
+			}
+			return tempList;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
+
 }
