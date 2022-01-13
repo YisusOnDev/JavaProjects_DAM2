@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jan 13, 2022, 11:14:58 PM by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true"
+	default-access="property" default-cascade="none" default-lazy="true">
+	<class catalog="hibernatetest" dynamic-insert="false"
+		dynamic-update="false" mutable="true" name="main.Profesor"
+		optimistic-lock="none" polymorphism="implicit"
+		select-before-update="false" table="profesor">
+		<id name="id" type="int">
+			<column name="Id" />
+			<generator class="assigned" />
+		</id>
+		<property generated="never" lazy="false" name="ape1"
+			optimistic-lock="true" type="string" unique="false">
+			<column name="ape1" />
+		</property>
+		<property generated="never" lazy="false" name="ape2"
+			optimistic-lock="true" type="string" unique="false">
+			<column name="ape2" />
+		</property>
+		<property generated="never" lazy="false" name="nombre"
+			optimistic-lock="true" type="string" unique="false">
+			<column name="nombre" />
+		</property>
+		<property generated="never" lazy="false"
+			name="tipoFuncionario" optimistic-lock="true" type="string"
+			unique="false">
+			<column name="tipoFuncionario" />
+		</property>
+	</class>
+	<query name="selectAllProfesor">
+		<![CDATA[ SELECT p FROM Profesor p ]]>
+	</query>
+</hibernate-mapping>
